@@ -14,8 +14,10 @@ matrix:
       python: "3.4"
     - os: osx
       compiler: clang
+      python: "3.6"
     - os: osx
       compiler: gcc
+      python: "3.6"
 
 git:
   depth: 5
