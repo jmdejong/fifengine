@@ -31,7 +31,7 @@ script:
    #- cd /usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib
    #- ls
    #- if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/usr/local/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/include/python3.6m/ -DPYTHON_LIBRARY=/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/ ../fifengine; fi
-   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/usr/local/bin/python3 ../fifengine; fi
+   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/Users/travis/build/fifengine/fifengine/env/bin/python ../fifengine; fi
    - ls -alh .
    - make -j3
    - sudo make install
