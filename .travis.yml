@@ -24,10 +24,13 @@ install:
 
 script:
    - cd ..
-   - cd /usr/local/Cellar/python3; then print; fi
-   - cd /usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/include/python3.6m/; then print; fi
-   - cd /usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib; then print; fi
-   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/usr/local/bin/python3 -DPYTHON_INCLUDE_DIR=/Library/Frameworks/Python.framework/Versions/3.6/include/ -DPYTHON_LIBRARY=/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6.dylib ../fifengine; fi
+   - cd /usr/local/Cellar/python3
+   - print
+   - cd /usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/include/python3.6m/
+   - print
+   - cd /usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib
+   - print
+   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/usr/local/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/include/python3.6m/ -DPYTHON_LIBRARY=/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/ ../fifengine; fi
    - ls -alh .
    - make -j3
    - sudo make install
