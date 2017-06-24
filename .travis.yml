@@ -10,7 +10,7 @@ git:
 
 before_install:
   - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3; fi
-  #- if [ $TRAVIS_OS_NAME == osx ]; then virtualenv env -p python3; source env/bin/activate; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then virtualenv env -p python3; source env/bin/activate; fi
 
 install:
     - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
@@ -21,7 +21,7 @@ install:
 
 script:
    - cd ..
-   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/usr/local/bin/python3 -DPYTHON_LIBRARY=/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/include/python3.6m -DPYTHON_PACKAGES_PATH=~/usr/local/Cellar/python3/3.6.1/Frameworks/Python.framework/Versions/3.6/site-packages ../fifengine; fi
+   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/usr/local/bin/python3 -DPYTHON_LIBRARY=/Library/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib -DPYTHON_INCLUDE_DIR=/Library/Frameworks/Python.framework/Versions/3.6/include/python3.6m -DPYTHON_PACKAGES_PATH=/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages ../fifengine; fi
    - ls -alh .
    - make -j3
    - sudo make install
