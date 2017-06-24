@@ -14,12 +14,12 @@ before_install:
   - cmake --version
 
 install:
-    #- git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
-    # https://github.com/fifengine/fifechan/blob/master/INSTALL.md
-    #- if [ $TRAVIS_OS_NAME == osx ]; then mkdir build_fifechan; cd build_fifechan; cmake ../fifechan; fi
-    #- make -j3
-   # - sudo make install
-   # - cd ..
+    - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
+     https://github.com/fifengine/fifechan/blob/master/INSTALL.md
+    - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build_fifechan; cd build_fifechan; cmake ../fifechan; fi
+    - make -j3
+    - sudo make install
+    - cd ..
 
 script:
    - cd ..
