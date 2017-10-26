@@ -28,7 +28,7 @@ script:
 
 script:
   - cd ..
-  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/usr/local/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/local/Frameworks/Python.framework/Versions/3.6/include/ -DPYTHON_LIBRARY=/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib ../fifengine; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE:PATH=/usr/local/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/local/Frameworks/Python.framework/Versions/3.6/include/python3.6m -DPYTHON_LIBRARY=/usr/local/Frameworks/Python.framework/Versions/3.6/lib/libpython3.6m.dylib ../fifengine; fi
   - ls -alh .
   - make -j3
   - sudo make install
