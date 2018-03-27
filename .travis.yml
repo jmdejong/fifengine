@@ -9,7 +9,7 @@ git:
   depth: 5
 
 before_install:
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis && brew upgrade python; fi
   - if [ $TRAVIS_OS_NAME == osx ]; then virtualenv env -p python3; source env/bin/activate; fi
 
 install:
