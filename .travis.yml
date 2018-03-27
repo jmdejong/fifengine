@@ -20,15 +20,8 @@ install:
   - cd ..
 
 script:
-  - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
-  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build_fifechan; cd build_fifechan; cmake ../fifechan; fi
-  - make -j3
-  - sudo make install
   - cd ..
-
-script:
-  - cd ..
-  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPYTHON_EXECUTABLE=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3 ..; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPYTHON_EXECUTABLE=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3 .. ; fi
   - ls -alh .
   - make -j3
   - sudo make install
