@@ -28,7 +28,7 @@ script:
 
 script:
   - cd ..
-  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPYTHON_EXECUTABLE=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3 ..
+  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPYTHON_EXECUTABLE=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3 ..; fi
   - ls -alh .
   - make -j3
   - sudo make install
