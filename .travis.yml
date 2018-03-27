@@ -10,7 +10,8 @@ git:
 
 before_install:
   - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis && brew upgrade python; fi
-  #- if [ $TRAVIS_OS_NAME == osx ]; then virtualenv env -p python3; source env/bin/activate; fi
+  - cd /Library/Frameworks/Python.framework/Versions/3.6/bin/
+  - dir
 
 install:
   - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
