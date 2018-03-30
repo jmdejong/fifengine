@@ -18,10 +18,12 @@ install:
   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build_fifechan; cd build_fifechan; cmake ../fifechan; fi
   - make -j3
   - sudo make install
-  - cd ../../
+  - cd $TRAVIS_BUILD_DIR
+  - cd fifengine
   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir _build; cd _build; cmake -Dbuild-library=ON -DPYTHON_EXECUTABLE=/usr/local/bin/python3 -Dcegui=OFF ..; fi
   - make
   - sudo make install
+  - pwd
 
 script:
   - python3 -c 'from fife import fife; print(fife.getVersion())'
