@@ -14,7 +14,7 @@ before_install:
   - cd ../
 
 install:
-  - if [ $TRAVIS_OS_NAME == osx ]; then - then brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then - brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python; fi
   - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build_fifechan; cd build_fifechan; cmake ../fifechan; fi
   - make -j3
