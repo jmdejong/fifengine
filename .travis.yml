@@ -9,26 +9,21 @@ git:
   depth: 5
 
 before_install:
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis && brew upgrade python; fi
-  - cd /Library/Frameworks/Python.framework/Versions/3.6/bin/
-  - dir
+  - pwd
+  - cd ../
 
 install:
+  - if [ $TRAVIS_OS_NAME == osx ]; then - HOMEBREW_NO_AUTO_UPDATE=1 brew install swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python || brew upgrade swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python || brew outdated swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis  python3 python; fi
   - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
   - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build_fifechan; cd build_fifechan; cmake ../fifechan; fi
   - make -j3
   - sudo make install
-  - cd ..
-
-script:
-  - cd ..
-  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPYTHON_EXECUTABLE=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3 ../fifengine; fi
-  - ls -alh .
-  - make -j3
+  - cd ../../
+  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir _build; cd _build; cmake -Dbuild-library=ON -DPYTHON_EXECUTABLE=/usr/local/bin/python3 -Dcegui=OFF ..; fi
+  - make
   - sudo make install
 
-after_script: 
-  - cd $TRAVIS_BUILD_DIR
+script:
   - python3 -c 'from fife import fife; print(fife.getVersion())'
 
 notifications:
