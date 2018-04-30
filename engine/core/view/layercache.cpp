@@ -702,8 +702,7 @@ namespace FIFE {
 		if (image) {
 			int32_t w = image->getWidth();
 			int32_t h = image->getHeight();
-			double z_y_ratio = screenPosition.z / screenPosition.y;
-			screenPosition.z = screenPosition.z + image->getYShift() * z_y_ratio;
+			screenPosition.z = screenPosition.z + image->getYShift() * screenPosition.z / screenPosition.y;
 			screenPosition.x = (screenPosition.x - w / 2) + image->getXShift();
 			screenPosition.y = (screenPosition.y - h / 2) + image->getYShift();
 			item->bbox.w = w;
