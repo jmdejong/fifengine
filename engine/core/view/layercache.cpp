@@ -53,7 +53,7 @@ namespace FIFE {
 	 *  @relates Logger
 	 */
 	static Logger _log(LM_CAMERA);
-	
+
 	class CacheLayerChangeListener : public LayerChangeListener {
 	public:
 		CacheLayerChangeListener(LayerCache* cache)	{
@@ -181,7 +181,7 @@ namespace FIFE {
 		m_zoom = camera->getZoom();
 		m_zoomed = !Mathd::Equal(m_zoom, 1.0);
 		m_straightZoom = Mathd::Equal(fmod(m_zoom, 1.0), 0.0);
-		
+
 		if(RenderBackend::instance()->getName() == "OpenGL" && RenderBackend::instance()->isDepthBufferEnabled()) {
 			m_needSorting = false;
 		} else {
@@ -456,7 +456,7 @@ namespace FIFE {
 			}
 		}
 	}
-	
+
 	void LayerCache::fullUpdate(Camera::Transform transform) {
 		bool rotationChange = (transform & Camera::RotationTransform) == Camera::RotationTransform;
 		for (uint32_t i = 0; i != m_entries.size(); ++i) {
@@ -616,7 +616,7 @@ namespace FIFE {
 					uint32_t animationTime = instance->getActionRuntime() % it->second->getDuration();
 					image = it->second->getFrameByTimestamp(animationTime);
 					animOverlays->push_back(image);
-					
+
 					if (colorOverlay) {
 						OverlayColors* co = actionVisual->getColorOverlay(angle, it->first);
 						if (co) {
@@ -702,6 +702,8 @@ namespace FIFE {
 		if (image) {
 			int32_t w = image->getWidth();
 			int32_t h = image->getHeight();
+			double z_y_ratio = screenPosition.z / screenPosition.y;
+			screenPosition.z = screenPosition.z + image->getYShift() * z_y_ratio;
 			screenPosition.x = (screenPosition.x - w / 2) + image->getXShift();
 			screenPosition.y = (screenPosition.y - h / 2) + image->getYShift();
 			item->bbox.w = w;
